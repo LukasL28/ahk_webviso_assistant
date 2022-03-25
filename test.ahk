@@ -9,7 +9,7 @@ ChromeInst := new Chrome("ChromeProfile")
 ; Note: If your first action is to navigate away, it may be just as
 ; effective to provide the target URL when instantiating the Chrome class
 PageInst := ChromeInst.GetPage()
-PageInst.Call("Page.navigate", {"url": "https://autohotkey.com/"})
+PageInst.Call("Page.navigate", {"url": "https://google.de/"})
 PageInst.WaitForLoad()
 
 ; Execute some JavaScript
