@@ -1,4 +1,4 @@
-#Include lib/Chrome.ahk
+#Include ./lib/Chrome.ahk
 
 ; Create an instance of the Chrome class using
 ; the folder ChromeProfile to store the user profile
