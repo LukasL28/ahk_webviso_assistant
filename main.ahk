@@ -1,6 +1,11 @@
+#Include ./lib/Chrome.ahk
+FileCreateDir, ChromeProfile
+ChromeInst := new Chrome("ChromeProfile")
 
+PageInst := ChromeInst.GetPage()
+PageInst.Call("Page.navigate", {"url": "https://google.de/"})
+PageInst.WaitForLoad()
 
-Run http://192.168.100.53/?group=P1
 
 gui, add, text, x65 y20, Status:
 gui, add, text, x+5 vStatus, Please Wait! Checking for Internet Connection!
@@ -44,7 +49,11 @@ return
     FileDelete, %A_WorkingDir%\%PingFileName%
 	guicontrol, , Status, Wait 10 seconds ...!	
 	guicontrol, , LastCheck, Fail - Not Connected!
-    Run http://192.168.100.53/?group=P1
+    PageInst.Call("Browser.close")
+	PageInst.Disconnect()
+	PageInst := ChromeInst.GetPage()
+	PageInst.Call("Page.navigate", {"url": "https://google.de/"})
+	PageInst.WaitForLoad()
 	settimer, InternetCheck, -10000			;"-10000"after 10 seconds, "InternetCheck" lable will be executed only once
 	}
 

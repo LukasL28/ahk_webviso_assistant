@@ -12,8 +12,7 @@ PageInst := ChromeInst.GetPage()
 PageInst.Call("Page.navigate", {"url": "https://google.de/"})
 PageInst.WaitForLoad()
 
-; Execute some JavaScript
-PageInst.Evaluate("alert('Hello World!');")
+
 
 ; Close the browser (note: this closes *all* pages/tabs)
 PageInst.Call("Browser.close")
