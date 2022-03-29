@@ -3,8 +3,7 @@ name: Compole AHK to EXE
 on:
   push:
     tags:
-      - "*"
-
+      - '*'
 
 jobs:
   AhkToExe:
