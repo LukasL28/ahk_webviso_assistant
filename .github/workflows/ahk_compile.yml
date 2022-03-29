@@ -17,5 +17,7 @@ jobs:
         with:
           in: main.ahk
 
-      - name: Create Release
-        uses: ncipollo/release-action@v1.9.0
+      - name: Github Release
+        uses: elgohr/Github-Release-Action@v3.1
+        with:
+          release: script
