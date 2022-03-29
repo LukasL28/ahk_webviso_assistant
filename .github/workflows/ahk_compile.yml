@@ -1,6 +1,10 @@
 name: Compole AHK to EXE
 
-on: push
+on:
+  push:
+    tags:
+      - "*"
+
 
 jobs:
   AhkToExe:
