@@ -17,10 +17,5 @@ jobs:
         with:
           in: main.ahk
 
-      - name: Release
-        uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/')
-        with:
-          files: example.exe
-        env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - name: Create Release
+        uses: ncipollo/release-action@v1.9.0
