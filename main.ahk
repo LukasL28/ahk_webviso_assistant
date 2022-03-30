@@ -13,7 +13,9 @@ IfnotExist, %A_WorkingDir%\webviso_assistant_config.ini
 create_config() ;webviso_assistant_config.ini
 }
 
+;read config
 url := read_config("config", "url")
+ping_interval := read_config("ping", "ping_interval")
 
 init:
 if WinExist("Google Chrome") {
@@ -54,7 +56,7 @@ msgbox, Fail! "cmd.exe" or "ping.exe" files not found!
 exitapp
 }
 
-settimer, CheckPingFileName, -10000	
+settimer, CheckPingFileName, -%ping_interval%
 return
 
 	CheckPingFileName:
@@ -66,7 +68,7 @@ return
 		test_fail = 0
 		settimer, init, -1000	
 	} else {
-		settimer, InternetCheck, -10000
+		settimer, InternetCheck, -%ping_interval%
 	}
 
 	}
@@ -78,7 +80,7 @@ return
 		PageInst.Call("Browser.close")
 		PageInst.Disconnect()
 	} 
-	settimer, InternetCheck, -10000	
+	settimer, InternetCheck, -%ping_interval%
 	}
 
 	return
