@@ -1,4 +1,5 @@
 #Include ./lib/Chrome.ahk
+#Include ./scripts/config.ahk
 
 SetTitleMatchMode 2
 
@@ -6,6 +7,13 @@ test_fail = 0
 
 FileCreateDir, ChromeProfile
 FileCreateDir, tmp
+
+IfnotExist, %A_WorkingDir%\webviso_assistant_config.ini 
+{
+create_config() ;webviso_assistant_config.ini
+}
+
+url := read_config("config", "url")
 
 init:
 if WinExist("Google Chrome") {
@@ -16,7 +24,7 @@ if WinExist("Google Chrome") {
 ChromeInst := new Chrome("ChromeProfile")
 
 PageInst := ChromeInst.GetPage()
-PageInst.Call("Page.navigate", {"url": "http://192.168.100.53/?group=P1"})
+PageInst.Call("Page.navigate", {"url":url})
 PageInst.WaitForLoad()
 
 Sleep 1000
@@ -53,7 +61,7 @@ return
 
 	IfExist, %A_WorkingDir%\tmp\%PingFileName%	
 	{
-	FileDelete, %A_WorkingDir%\tmp\%PingFileName%
+	FileDelete, %A_WorkingDir%\tmp\*
 	if (test_fail == 1) {
 		test_fail = 0
 		settimer, init, -1000	
@@ -64,7 +72,7 @@ return
 	}
 	else
 	{
-    FileDelete, %A_WorkingDir%\tmp\%PingFileName%
+    FileDelete, %A_WorkingDir%\tmp\*
 	test_fail = 1
 	if WinExist("Google Chrome") {
 		PageInst.Call("Browser.close")
