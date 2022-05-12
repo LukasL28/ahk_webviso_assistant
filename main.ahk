@@ -1,5 +1,6 @@
 #Include ./lib/Chrome.ahk
 #Include ./scripts/config.ahk
+#Include ./scripts/blockinput.ahk
 
 SetTitleMatchMode 2
 
@@ -17,11 +18,15 @@ create_config() ;webviso_assistant_config.ini
 url := read_config("config", "url")
 ping_interval := read_config("ping", "ping_interval")
 
-init:
+;disable keyboard / mouse input
+;block_toggle(read_config("behavior", "disable_overwrite_key"))
+
 if WinExist("Google Chrome") {
 	PageInst.Call("Browser.close")
 	PageInst.Disconnect()
 }
+
+init:
 
 ChromeInst := new Chrome("ChromeProfile")
 
@@ -39,12 +44,15 @@ if WinExist("Google Chrome") {
 
 }
 
+
 InternetCheck:
 
-if WinExist  ("Google Chrome") {
-} else {
-	settimer, init, -1000
-}
+	if (test_fail == 0) {
+		if WinExist("Google Chrome") {
+		} else {
+			settimer, init, -1000
+		}
+	}
 
 PingFileName = %a_Sec%%a_MSec%
 

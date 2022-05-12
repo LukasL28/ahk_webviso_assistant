@@ -15,9 +15,9 @@ IniWrite,10000,%file_name%,ping,ping_interval
 
 FileAppend `n, %file_name%
 
-IniWrite,false,%file_name%,behaviour,disabel_keyborad
-IniWrite,false,%file_name%,behaviour,disabel_mouse
-IniWrite,{F12},%file_name%,behaviour,disable_overwrite_key
+IniWrite,false,%file_name%,behavior,disabel_keyborad
+IniWrite,false,%file_name%,behavior,disabel_mouse
+IniWrite,{F12},%file_name%,behavior,disable_overwrite_key
 }
 
 read_config(Section, Key){
