@@ -1,8 +1,10 @@
 V0.7
 
-Preparation for v0.8
++ Preparation for v0.8
 
-Fixed browser reopening if internet connection is lost!
++ Added mouse movement blocking! Can be set in "webviso_assistant_config.ini"
 
-Fixed crash ist browser is closed while internet connection is lost!
+~ Fixed browser reopening if internet connection is lost!
+
+~ Fixed crash ist browser is closed while internet connection is lost!
 

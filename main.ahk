@@ -19,7 +19,7 @@ url := read_config("config", "url")
 ping_interval := read_config("ping", "ping_interval")
 
 ;disable keyboard / mouse input
-;block_toggle(read_config("behavior", "disable_overwrite_key"))
+block_toggle(read_config("behavior", "disable_overwrite_key"), read_config("behavior", "disabel_mouse"))
 
 if WinExist("Google Chrome") {
 	PageInst.Call("Browser.close")

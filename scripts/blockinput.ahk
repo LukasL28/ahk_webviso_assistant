@@ -1,5 +1,5 @@
 
-block_toggle(key) {
+block_toggle(key, mouse) {
 
 toggle := true
 
@@ -12,13 +12,16 @@ if toggle { ;off
     BlockInput, MouseMoveOff
     return
 } else { ;on
+
+    If (mouse == "true") {
 	BlockInput, MouseMove
-    
-    while true {
-    Input,v,,{%key%}
-	If InStr(ErrorLevel,"EndKey")
-		Send % "{" SubStr(ErrorLevel,8) "}"
-    }
+    }    
+    ; ;Block Keypoard input ... 
+    ; while true {
+    ; Input,v,,{%key%}
+	; If InStr(ErrorLevel,"EndKey")
+	; 	Send % "{" SubStr(ErrorLevel,8) "}"
+    ; }
 
     return
 }
