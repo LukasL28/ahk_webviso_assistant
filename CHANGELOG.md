@@ -1,3 +1,13 @@
+V0.8
+
++ Preparation for v0.9
+
+- Removed block keyboard option (for now)
+
+~ Fixed crash if config is created
+
+
+
 V0.7
 
 + Preparation for v0.8
