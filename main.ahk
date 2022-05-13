@@ -1,3 +1,8 @@
+IfnotExist, %A_WorkingDir%\webviso_assistant_config.ini 
+{
+create_config() ;webviso_assistant_config.ini
+}
+
 #Include ./lib/Chrome.ahk
 #Include ./scripts/config.ahk
 #Include ./scripts/blockinput.ahk
@@ -8,11 +13,6 @@ test_fail = 0
 
 FileCreateDir, ChromeProfile
 FileCreateDir, tmp
-
-IfnotExist, %A_WorkingDir%\webviso_assistant_config.ini 
-{
-create_config() ;webviso_assistant_config.ini
-}
 
 ;read config
 url := read_config("config", "url")
