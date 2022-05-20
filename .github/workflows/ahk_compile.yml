@@ -19,10 +19,11 @@ jobs:
         uses: nekocodeX/GitHub-Action-Ahk2Exe@main
         with:
           in: main.ahk
+          out: Webviso_assistant.exe
 
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          files: main.exe
+          files: Webviso_assistant.exe
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
